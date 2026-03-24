@@ -1,3 +1,4 @@
 module.exports = {
-  '*.{js,jsx,ts,tsx}': ['npx prettier --write', 'npx eslint --fix']
+  // 👇 Olha o mjs e o cjs aqui agora!
+  '*.{js,mjs,cjs,jsx,ts,tsx}': ['npx prettier --write', 'npx eslint --fix']
 }
