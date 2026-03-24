@@ -8,6 +8,7 @@ import { defineConfig } from 'eslint/config'
 import eslintConfigPrettier from 'eslint-config-prettier'
 
 export default defineConfig([
+  { ignores: ['.next/', 'coverage/', 'jest.config.js'] },
   { files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'] },
 
   js.configs.recommended,
@@ -23,6 +24,7 @@ export default defineConfig([
       globals: {
         ...globals.browser,
         ...globals.node,
+        ...globals.jest,
         React: 'writable'
       }
     },
