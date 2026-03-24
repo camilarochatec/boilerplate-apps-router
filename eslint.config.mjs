@@ -3,7 +3,7 @@ import globals from 'globals'
 import tseslint from 'typescript-eslint'
 import pluginReact from 'eslint-plugin-react'
 import pluginNext from '@next/eslint-plugin-next'
-import pluginReactHooks from 'eslint-plugin-react-hooks' // 👈 1. NOVO INGREDIENTE NO TOPO!
+import pluginReactHooks from 'eslint-plugin-react-hooks'
 import { defineConfig } from 'eslint/config'
 import eslintConfigPrettier from 'eslint-config-prettier'
 
@@ -17,12 +17,18 @@ export default defineConfig([
   {
     plugins: {
       '@next/next': pluginNext,
-      'react-hooks': pluginReactHooks // 👈 2. CONVIDANDO O PLUGIN PARA A FESTA!
+      'react-hooks': pluginReactHooks
     },
     languageOptions: {
       globals: {
         ...globals.browser,
         ...globals.node
+      }
+    },
+    // 👈 1. AVISANDO A VERSÃO DO REACT PARA SUMIR AQUELE AVISO CHATO!
+    settings: {
+      react: {
+        version: 'detect'
       }
     },
     rules: {
@@ -35,7 +41,11 @@ export default defineConfig([
       'react-hooks/exhaustive-deps': 'warn',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
 
-      '@typescript-eslint/no-unused-vars': 'warn'
+      // 👈 2. MUDAMOS DE "warn" PARA "error"! Agora o commit é bloqueado se tiver variável sem uso!
+      '@typescript-eslint/no-unused-vars': 'error',
+
+      // 👈 3. LIGAMOS A REGRA "no-undef" COMO ERRO! Nenhuma variável fantasma passa mais!
+      'no-undef': 'error'
     }
   },
 
