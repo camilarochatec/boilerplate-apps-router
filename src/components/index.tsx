@@ -1,7 +1,7 @@
 const Main = () => (
-  <main>
+  <div>
     <h1>React avançado com React Router Dom</h1>
-  </main>
+  </div>
 )
 
 export default Main
