@@ -7,8 +7,6 @@ const geistSans = Geist({
   subsets: ['latin']
 })
 
-console.log(variavelFantasmaQueNaoExiste)
-
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin']

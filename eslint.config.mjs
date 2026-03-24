@@ -22,7 +22,8 @@ export default defineConfig([
     languageOptions: {
       globals: {
         ...globals.browser,
-        ...globals.node
+        ...globals.node,
+        React: 'writable'
       }
     },
     // 👈 1. AVISANDO A VERSÃO DO REACT PARA SUMIR AQUELE AVISO CHATO!
