@@ -1,0 +1,10 @@
+# editorconfig.org  --> Apenas um comentário com o site oficial. 
+root = true        # --> Avisa ao VS Code: "Este é o arquivo principal, não procure regras em pastas superiores no computador". 
+ 
+[*]                 # --> Significa: "Aplique as regras abaixo para TODOS os arquivos". 
+indent_style = space# --> Define que ao apertar a tecla TAB, o editor usará espaços em vez de tabulação real. 
+indent_size = 2     # --> Define que cada nível de indentação (espaçamento) terá o tamanho de 2 espaços. 
+end_of_line = lf    # --> Padroniza a quebra de linha para o formato Unix (LF). Evita bugs caso alguém abra o código no Windows (que usa CRLF). 
+charset = utf-8     # --> Garante que o arquivo aceitará caracteres especiais (como acentos) usando o padrão UTF-8. 
+trim_trailing_whitespace = true # --> Limpa automaticamente os espaços em branco "sobrando" no final das linhas quando você salva. 
+insert_final_newline = true     # --> Garante que todo arquivo termine com uma linha vazia no final (uma boa prática em programação). 
