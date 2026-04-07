@@ -1,0 +1,46 @@
+name: ci
+# Dá um nome ao nosso robô/workflow. É assim que ele vai aparecer lá na aba "Actions" do GitHub.
+
+on: [pull_request]
+# GATILHO (Trigger): Diz QUANDO o robô deve trabalhar. Aqui, ele só vai rodar quando alguém abrir um "Pull Request" (tentar juntar um código novo no projeto).
+
+jobs:
+  # Aqui começam as "tarefas" que o robô vai executar.
+  build:
+    # Nome da nossa primeira (e única) tarefa. Chamamos de "build".
+    runs-on: ubuntu-latest
+    # MÁQUINA: Diz ao GitHub qual computador virtual ele deve emprestar para rodar nosso código. Aqui pedimos a versão mais recente do Linux Ubuntu.
+
+    steps:
+      # PASSOS: Uma lista do que a máquina vai fazer, em ordem.
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        # ATENÇÃO AQUI: O correto é 'uses' (usar) e não 'user' (usuário).
+        # Essa ação baixa (clona) o código do seu repositório para dentro da máquina virtual.
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        # Essa ação instala o Node.js na máquina virtual.
+        with:
+          # 'with' passa configurações extras para a ação de cima.
+          node-version: 18.x
+          # Pede a versão 18 do Node.
+          cache: 'npm'
+          # Salva os pacotes NPM em cache para que as próximas vezes que o robô rodar, seja muito mais rápido!
+
+      - name: Install dependencies
+        run: npm install
+        # A partir daqui, usamos 'run' para executar comandos de terminal. Aqui instalamos as bibliotecas (node_modules).
+
+      - name: Linting
+        run: npm run lint
+        # Roda o Linter (ex: ESLint) para verificar se o código está no padrão, sem variáveis não usadas, etc.
+
+      - name: Testing
+        run: npm run test
+        # Roda seus testes automatizados (ex: Jest). Se algum teste falhar, o robô para aqui e dá erro!
+
+      - name: Build
+        run: npm run build
+        # Tenta compilar/construir o projeto (muito comum em Next.js e TypeScript). Se der erro de tipagem, ele falha aqui.
