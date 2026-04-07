@@ -24,8 +24,8 @@ jobs:
         # Essa ação instala o Node.js na máquina virtual.
         with:
           # 'with' passa configurações extras para a ação de cima.
-          node-version: 18.x
-          # Pede a versão 18 do Node.
+          node-version: 20.x
+          # Pede a versão 20 do Node.
           cache: 'npm'
           # Salva os pacotes NPM em cache para que as próximas vezes que o robô rodar, seja muito mais rápido!
 
